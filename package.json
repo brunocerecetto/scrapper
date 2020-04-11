@@ -1,0 +1,19 @@
+{
+  "name": "scrapper",
+  "version": "1.0.0",
+  "main": "dist/app.js",
+  "repository": "https://github.com/brunocerecetto/scrapper.git",
+  "author": "Bruno Cerecetto <bruno.cerecetto@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "tslint": "^6.1.1",
+    "typescript": "^3.8.3",
+    "@types/express": "^4.17.6"
+  },
+  "scripts": {
+    "start": "tsc && node dist/app.js"
+  }
+}
