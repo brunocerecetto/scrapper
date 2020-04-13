@@ -1,4 +1,6 @@
 import express, { Request, Response } from 'express';
+import { Container } from 'typedi';
+import ScrapperService from '../../services/scrapper';
 import { ControllerBase } from '../../interfaces/controllerBase.interface';
 
 class HomeController implements ControllerBase {
@@ -14,23 +16,10 @@ class HomeController implements ControllerBase {
     this.router.get('/', this.index);
   }
 
-  index = (req: Request, res: Response): void => {
-    const users = [
-      {
-        id: 1,
-        name: 'Ali',
-      },
-      {
-        id: 2,
-        name: 'Can',
-      },
-      {
-        id: 3,
-        name: 'Ahmet',
-      },
-    ];
-
-    res.send(users);
+  index = async (req: Request, res: Response): Promise<void> => {
+    const scrapperServiceInstance = Container.get(ScrapperService); // Service locator
+    const movies = await scrapperServiceInstance.GetMovies();
+    res.json(movies);
   };
 }
 
